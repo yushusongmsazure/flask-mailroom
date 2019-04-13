@@ -1,3 +1,6 @@
+#Yushu Song
+#Assignment 1
+
 import os
 import base64
 
@@ -22,25 +25,14 @@ def create():
         return render_template('create.jinja2')
     
     if request.method == 'POST':
-        donor = Donor.select().where(Donor.name == 'Charlie').get()
-        print(donor)
-        old_donation = Donation.select().where(Donation.donor == donor).get()
-        print(old_donation)
+        donor_name = (request.form['name'])
+        value = int(request.form['donation'])
+        donor = Donor.select().where(Donor.name == donor_name).get()
 
-        # Donation.update(performed=, performed_by=user)\
-        #     .where(Task.id == request.form['task_id'])\
-        #     .execute()
-        #user = User.select().where(User.name == session['username']).get()
-
-        # Donation.update(performed=datetime.now(), performed_by=user)\
-        #     .where(Task.id == request.form['task_id'])\
-        #     .execute()
-        new_donation = Donation(value=10, donor=donor)
+        new_donation = Donation(value=value, donor=donor)
         new_donation.save()
         return redirect(url_for('home'))
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 6738))
     app.run(host='0.0.0.0', port=port)
-

@@ -1,3 +1,6 @@
+#Yushu Song
+#Assignment 1
+
 import random
 
 from model import db, Donor, Donation 

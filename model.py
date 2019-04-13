@@ -1,3 +1,6 @@
+#Yushu Song
+#Assignment 1
+
 import os
 
 from peewee import Model, CharField, IntegerField, ForeignKeyField
